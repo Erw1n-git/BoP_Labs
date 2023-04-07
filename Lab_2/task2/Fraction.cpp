@@ -7,12 +7,12 @@ Fraction::Fraction(int numerator, int denominator = 1)
     this->denominator = denominator;
 }
 
-int Fraction::getNumerator()
+int Fraction::getNumerator() const
 {
     return numerator; 
 }
 
-int Fraction::getDenominator()
+int Fraction::getDenominator() const
 {
     return denominator;
 }

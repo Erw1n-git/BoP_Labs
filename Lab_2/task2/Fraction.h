@@ -27,8 +27,8 @@ class Fraction {
         Fraction() : Fraction(0, 1) { }
         Fraction(int numerator, int denominator);
 
-        int getNumerator();
-        int getDenominator();
+        int getNumerator() const;
+        int getDenominator() const;
 
         void setNumerator(int numerator);
         void setDenominator(int denominator);
