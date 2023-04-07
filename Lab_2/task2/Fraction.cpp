@@ -1,65 +1,127 @@
 #include "Fraction.h"
 
-Fraction::Fraction(int divisible, int divisor = 1)
+Fraction::Fraction(int numerator, int denominator = 1)
 {
-    this->divisible = divisible;
-    if(divisor == 0) throw std::runtime_error("Divide by zero exception.");
-    this->divisor = divisor;
+    this->numerator = numerator;
+    if(denominator == 0) throw std::runtime_error("Divide by zero exception.");
+    this->denominator = denominator;
 }
 
-int Fraction::getDivisible()
+int Fraction::getNumerator()
 {
-    return divisible; 
+    return numerator; 
 }
 
-int Fraction::getDivisor()
+int Fraction::getDenominator()
 {
-    return divisor;
+    return denominator;
 }
 
-void Fraction::setDivisible(int divisible)
+void Fraction::setNumerator(int numerator)
 {
-    this->divisible = divisible;
+    this->numerator = numerator;
 }
 
-void Fraction::setDivisor(int divisor)
+void Fraction::setDenominator(int denominator)
 {
-    if(divisor == 0) throw std::runtime_error("Divide by zero exception.");
-    this->divisor = divisor;
+    if(denominator == 0) throw std::runtime_error("Divide by zero exception.");
+    this->denominator = denominator;
 }
 
 void Fraction::reduce()
 {
-    int gcd = std::gcd(divisible, divisor);
-    divisible /= gcd;
-    divisor /= gcd;
+    int _gcd = std::gcd(numerator, denominator);
+    numerator /= _gcd;
+    denominator /= _gcd;
 }
 
-Fraction Fraction::operator+(Fraction &fraction)
+Fraction operator+(Fraction& f1, Fraction& f2)
 {
-    int newDivisible = divisible * fraction.divisor + fraction.divisible * divisor;
-    int newDivisor = divisor * fraction.divisor;
-    return Fraction(newDivisible, newDivisor);
+    int newNumerator = f1.numerator * f2.denominator + f2.numerator * f1.denominator;
+    int newDenominator = f1.denominator * f2.denominator;
+    return Fraction(newNumerator, newDenominator);
 }
 
-Fraction Fraction::operator-(Fraction &fraction)
+Fraction operator-(Fraction& f1, Fraction& f2)
 {
-    int newDivisible = divisible * fraction.divisor - fraction.divisible * divisor;
-    int newDivisor = divisor * fraction.divisor;
-    return Fraction(newDivisible, newDivisor);
+    int newNumerator = f1.numerator * f2.denominator - f2.numerator * f1.denominator;
+    int newDenominator = f1.denominator * f2.denominator;
+    return Fraction(newNumerator, newDenominator);
 }
 
-Fraction Fraction::operator*(Fraction& fraction) 
+Fraction operator*(Fraction& f1, Fraction& f2) 
 {
-    int newDivisible = divisible * fraction.divisible;
-    int newDivisor = divisor * fraction.divisor;
-    return Fraction(newDivisible, newDivisor);
+    int newNumerator = f1.numerator * f2.numerator;
+    int newDenominator = f1.denominator * f2.denominator;
+    return Fraction(newNumerator, newDenominator);
 }
     
-Fraction Fraction::operator/(Fraction& fraction)
+Fraction operator/(Fraction& f1, Fraction& f2)
 {
-    if (fraction.divisible == 0) throw std::invalid_argument("Cannot divide by zero");
-    int newDivisible = divisible * fraction.divisor;
-    int newDivisor = divisor * fraction.divisible;
-    return Fraction(newDivisible, newDivisor);
+    if (f1.numerator == 0) throw std::invalid_argument("Cannot divide by zero");
+    int newNumerator = f1.numerator * f2.denominator;
+    int newDenominator = f1.denominator * f2.numerator;
+    return Fraction(newNumerator, newDenominator);
+}
+
+bool operator<(Fraction& f1, Fraction& f2)
+{
+    return f1.numerator * f2.denominator < f2.numerator * f1.denominator;
+}
+
+bool operator<=(Fraction& f1, Fraction& f2)
+{
+    return f1.numerator * f2.denominator <= f2.numerator * f1.denominator;
+}
+
+bool operator>(Fraction& f1, Fraction& f2)
+{
+    return f1.numerator * f2.denominator > f2.numerator * f1.denominator;
+}
+
+bool operator>=(Fraction& f1, Fraction& f2)
+{
+    return f1.numerator * f2.denominator >= f2.numerator * f1.denominator;
+}
+
+std::ostream& operator<<(std::ostream& out, Fraction& f1)
+{
+    int integerPart = f1.numerator / f1.denominator; 
+    int newNumerator = f1.numerator % f1.denominator;
+    int newDenominator = f1.denominator;
+
+    if (newNumerator == 0) 
+    { 
+        if (integerPart == 0) { 
+            out << "0";
+        } 
+        else 
+        {
+            out << integerPart;
+        }
+    } 
+    else if (integerPart == 0) 
+    { 
+        out << newNumerator << "/" << newDenominator; 
+    } 
+    else 
+    { 
+        out << "(" << integerPart << ") " << newNumerator << "/" << newDenominator;
+    }
+    return out;
+}
+
+std::istream& operator>>(std::istream& in, Fraction& f1)
+{
+    int numerator, denominator;
+    char c;
+    in >> numerator >> c >> denominator;
+    if(c != '/')
+    {
+        in.setstate(std::ios_base::failbit); // Indicate input error
+        return in;
+    }
+
+    f1 = Fraction(numerator, denominator);
+    return in;
 }
