@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 
-#include "numeric"
+#include <numeric>
 
 #ifndef FRACTION_H
 #define FRACTION_H
