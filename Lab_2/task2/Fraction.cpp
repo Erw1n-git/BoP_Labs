@@ -2,9 +2,8 @@
 
 Fraction::Fraction(int numerator, int denominator = 1)
 {
-    this->numerator = numerator;
-    if(denominator == 0) throw std::runtime_error("Divide by zero exception.");
-    this->denominator = denominator;
+    setNumerator(numerator);
+    setDenominator(denominator);
 }
 
 int Fraction::getNumerator() const
