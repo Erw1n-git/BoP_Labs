@@ -12,12 +12,10 @@ Student::Student(unsigned int id, const char* surname, const int* grades, Group*
 
 Student::Student(const Student& student)
 {
-    id = student.id;
-    surname = new char[strlen(student.surname)+1];
-    strcpy(surname, student.surname);
-    grades = new int[5];
-    memcpy(grades, student.grades, sizeof(int) * 5);
-    group = student.group;
+    setId(student.id);
+    setSurname(student.surname);
+    setGrades(student.grades);
+    setGroup(student.group);
 }
 
 Student::~Student()
@@ -54,24 +52,31 @@ void Student::setId(unsigned int id)
 void Student::setSurname(const char* surname)
 {
     if(this->surname != nullptr) delete[] this->surname;
-    this->surname = new char[strlen(surname) + 1];
-    strcpy(this->surname, surname);
+    if (surname != nullptr) 
+    {
+        this->surname = new char[MAX_SURNAME_LENGTH];
+        strcpy(this->surname, surname);
+    } 
+    else this->surname = nullptr;
 }
 
 void Student::setGrades(const int* grades)
 {
     if(this->grades != nullptr) delete[] this->grades;
-    this->grades = new int[5];
-    memcpy(this->grades, grades, sizeof(int) * 5);
+    if (grades != nullptr) 
+    {
+        this->grades = new int[5];
+        memcpy(this->grades, grades, sizeof(int) * 5);
+    } 
+    else this->grades = nullptr;
 }
 
-// ! Check on need of deletion of old group
 void Student::setGroup(Group* group)
 {
     this->group = group;
 }
 
-const Student& Student::operator=(Student &student)
+const Student& Student::operator=(const Student &student)
 {
     if(&student != this)
     {
@@ -84,7 +89,93 @@ const Student& Student::operator=(Student &student)
     return *this;
 }
 
+const bool operator<(const Student& student1, const Student& student2)
+{
+    int sum_student1 = 0;
+    for (int i = 0; i < 5; i++) 
+    {
+        sum_student1 += student1.grades[i];
+    }
+
+    int sum_student2 = 0;
+    for (int i = 0; i < 5; i++) 
+    {
+        sum_student2 += student2.grades[i];
+    }
+
+    return sum_student1 < sum_student2;
+}
+
+const bool operator<=(const Student& student1, const Student& student2)
+{
+    int sum_student1 = 0;
+    for (int i = 0; i < 5; i++) 
+    {
+        sum_student1 += student1.grades[i];
+    }
+
+    int sum_student2 = 0;
+    for (int i = 0; i < 5; i++) 
+    {
+        sum_student2 += student2.grades[i];
+    }
+
+    return sum_student1 <= sum_student2;
+}
+
+const bool operator>(const Student& student1, const Student& student2)
+{
+    int sum_student1 = 0;
+    for (int i = 0; i < 5; i++) 
+    {
+        sum_student1 += student1.grades[i];
+    }
+
+    int sum_student2 = 0;
+    for (int i = 0; i < 5; i++) 
+    {
+        sum_student2 += student2.grades[i];
+    }
+
+    return sum_student1 > sum_student2;
+}
+
+const bool operator>=(const Student& student1, const Student& student2)
+{
+    int sum_student1 = 0;
+    for (int i = 0; i < 5; i++) 
+    {
+        sum_student1 += student1.grades[i];
+    }
+
+    int sum_student2 = 0;
+    for (int i = 0; i < 5; i++) 
+    {
+        sum_student2 += student2.grades[i];
+    }
+
+    return sum_student1 >= sum_student2;
+}
+
+const bool operator==(const Student& student1, const Student& student2)
+{
+    if (student1.id == student2.id && strcmp(student1.surname, student2.surname) == 0 &&
+        memcmp(student1.grades, student2.grades, sizeof(int) * 5) == 0 &&
+        student1.group == student2.group) return true;
+
+    return false;
+}
+
 std::ostream& operator<<(std::ostream& out, Student& student)
 {
-    
+    out << "ID: " << student.id << std::endl;
+    out << "Surname: " << student.surname << std::endl;
+    out << "Grades: ";
+    for (int i = 0; i < 5; i++)
+    {
+        out << student.grades[i] << " ";
+    }
+    out << "\n";
+    out << "Group: " << student.group;
+    return out;
 }

@@ -9,6 +9,12 @@ class Group;
 class Student {
 
     friend std::ostream& operator<<(std::ostream& out, Student& student);
+    friend const bool operator<(const Student& student1, const Student& student2);
+    friend const bool operator<=(const Student& student1, const Student& student2);
+    friend const bool operator>(const Student& student1, const Student& student2);
+    friend const bool operator>=(const Student& student1, const Student& student2);
+    friend const bool operator==(const Student& student1, const Student& student2);
+
 
     private:
         unsigned int id;
@@ -32,7 +38,7 @@ class Student {
         void setGrades(const int* grades);
         void setGroup(Group* group); 
 
-        const Student& operator=(Student &student);
+        const Student& operator=(const Student &student);
 
 };
 
