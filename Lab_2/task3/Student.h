@@ -23,8 +23,10 @@ class Student {
         Group* group;
 
     public:
-        Student() : Student(0, nullptr, nullptr, nullptr) { }
-        Student(unsigned int id, const char *surname, const int *grades, Group *group);
+        static const int MAX_GRADES_COUNT;
+
+        Student() : id(0), surname(nullptr), grades(nullptr), group(nullptr) { }
+        Student(unsigned int id, const char *surname, const int *grades, size_t n, Group* group);
         Student(const Student& student);
         ~Student();
 
@@ -35,7 +37,7 @@ class Student {
 
         void setId(unsigned int id);
         void setSurname(const char* surname);
-        void setGrades(const int* grades);
+        void setGrades(const int* grades, size_t n);
         void setGroup(Group* group); 
 
         const Student& operator=(const Student &student);
