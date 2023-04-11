@@ -2,7 +2,7 @@
 
 const int Group::MAX_STUDENTS_COUNT = 50;
 
-// ===== CONSTRUCTORS/DECONSTRUCTOR =====
+// ===== CONSTRUCTORS/DESTRUCTOR =====
 
 Group::Group(unsigned int index, Student** students, unsigned int size)
     : index(index), students(nullptr), size(size)
