@@ -1,6 +1,6 @@
 #include "Matrix.h"
 
-// ====== CONSTRUCTORS/DESTRUCTORS ======
+// ====== CONSTRUCTORS/DESTRUCTOR ======
 Matrix::Matrix(unsigned int rows, unsigned int columns)
 {
     if (rows <= 0 || columns <= 0) throw InvalidArgument("Invalid matrix size!");

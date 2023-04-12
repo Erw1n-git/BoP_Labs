@@ -1,11 +1,13 @@
 #include "Fraction.h"
 
+// ====== CONSTRUCTORS ======
 Fraction::Fraction(int numerator, int denominator = 1)
 {
     setNumerator(numerator);
     setDenominator(denominator);
 }
 
+// ====== GETTERS ======
 int Fraction::getNumerator() const
 {
     return numerator; 
@@ -16,6 +18,7 @@ int Fraction::getDenominator() const
     return denominator;
 }
 
+// ====== SETTERS ======
 void Fraction::setNumerator(int numerator)
 {
     this->numerator = numerator;
@@ -27,6 +30,7 @@ void Fraction::setDenominator(int denominator)
     this->denominator = denominator;
 }
 
+// ====== OTHERS ======
 void Fraction::reduce()
 {
     int _gcd = std::gcd(numerator, denominator);
@@ -34,6 +38,7 @@ void Fraction::reduce()
     denominator /= _gcd;
 }
 
+// ====== OPERATORS ======
 Fraction operator+(Fraction& f1, Fraction& f2)
 {
     int newNumerator = f1.numerator * f2.denominator + f2.numerator * f1.denominator;

@@ -24,10 +24,22 @@ int main(int argc, char** argv)
     {
         std::cerr << "[Error] Wrong index: " << e.getIndex() << '\n';
     }
+
+    int rows = 0, cols = 0;
+    while(1)
+    {
+        std::cout << "Enter matrix size(rows, columns): ";
+        std::cin >> rows >> cols;
     
-    unsigned int rows = 0, cols = 0;
-    std::cout << "Enter matrix size(rows, columns): ";
-    std::cin >> rows >> cols;
+        if(std::cin.fail())
+        {
+            std::cout << "Please enter matrix size in a valid format!" << std::endl;
+            std::cin.clear();
+            std::cin.ignore(10000, '\n'); 
+            continue;
+        }
+        break;
+    }
 
     Matrix matrix3(rows, cols);
     std::cout << "\nEnter the matrix values: " << std::endl;

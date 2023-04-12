@@ -1,6 +1,5 @@
 #include <iostream>
 #include <stdlib.h>
-
 #include <numeric>
 
 #ifndef FRACTION_H

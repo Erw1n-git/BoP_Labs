@@ -1,5 +1,6 @@
 #include "Point3D.h"
 
+// ====== CONSTRUCTORS ======
 Point3D::Point3D(double x, double y, double z)
 {
     this->x = x;
@@ -7,6 +8,7 @@ Point3D::Point3D(double x, double y, double z)
     this->z = z;
 }
 
+// ====== GETTERS ======
 double Point3D::getX()
 {
     return this->x;
@@ -22,6 +24,7 @@ double Point3D::getZ()
     return this->z;
 }
 
+// ====== SETTERS ======
 void Point3D::setX(double x)
 {
     this->x = x;
@@ -37,6 +40,7 @@ void Point3D::setZ(double z)
     this->z = z;
 }
 
+// ====== OPERATORS ======
 double operator-(Point3D p1, Point3D p2)
 {
     double dx = std::pow(p2.x - p1.x, 2);
