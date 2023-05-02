@@ -35,7 +35,6 @@ class Fraction {
         bool operator>(Fraction& f) const;
         bool operator>=(Fraction& f) const;
         bool operator==(Fraction& f) const;
-
 };
 
 #endif
