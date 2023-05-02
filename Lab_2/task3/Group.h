@@ -19,7 +19,7 @@ class Group {
         unsigned int size;
 
     public:
-        static const int MAX_STUDENTS_COUNT;
+        static const int MAX_STUDENTS_COUNT = 50;
 
         Group() : index(0), students(nullptr), size(0) { }
         Group(unsigned int index, Student** students, unsigned int size);

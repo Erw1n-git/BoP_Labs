@@ -1,7 +1,5 @@
 #include "Group.h"
 
-const int Group::MAX_STUDENTS_COUNT = 50;
-
 // ===== CONSTRUCTORS/DESTRUCTOR =====
 
 Group::Group(unsigned int index, Student** students, unsigned int size)

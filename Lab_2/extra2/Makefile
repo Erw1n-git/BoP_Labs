@@ -8,7 +8,7 @@ all: $(TARGET)
 $(TARGET): main.o ComplexNumber.o
 	$(CC) $(CFLAGS) $^ -o $(TARGET)
 
-main.o: main.cpp main.h
+main.o: main.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 ComplexNumber.o: ComplexNumber.cpp ComplexNumber.h

@@ -1,4 +1,6 @@
-#include "main.h"
+#include <iostream>
+
+#include "ComplexNumber.h"
 
 int main()
 {

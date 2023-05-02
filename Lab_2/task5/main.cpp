@@ -1,5 +1,6 @@
 #include <iostream>
 
+int sum = 10;
 class SumOfIntegers {
 private:
     int data;
@@ -7,7 +8,7 @@ private:
 
 public:
     SumOfIntegers(int value) : data(value) {
-        sum += data;
+        ::sum += data;
     }
 
     int getData() const {
@@ -15,7 +16,7 @@ public:
     }
 
     static int getSum() {
-        return sum;
+        return ::sum;
     }
 };
 

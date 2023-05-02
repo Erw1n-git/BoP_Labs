@@ -1,4 +1,6 @@
-#include "main.h"
+#include <iostream>
+
+#include "Fraction.h"
 
 int main(int argc, char **argv)
 {

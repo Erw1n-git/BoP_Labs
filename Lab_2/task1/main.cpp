@@ -1,4 +1,5 @@
-#include "main.h"
+#include <iostream>
+#include "Point3D.h"
 
 int main(int argc, char **argv)
 {

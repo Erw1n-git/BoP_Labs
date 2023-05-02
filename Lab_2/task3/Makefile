@@ -8,7 +8,7 @@ all: $(TARGET)
 $(TARGET): main.o Student.o Group.o
 	$(CC) $(CFLAGS) $^ -o $(TARGET)
 
-main.o: main.cpp main.h
+main.o: main.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 Student.o: Student.cpp Student.h

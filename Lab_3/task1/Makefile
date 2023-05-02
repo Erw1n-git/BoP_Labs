@@ -5,13 +5,13 @@ TARGET = main
 
 all: $(TARGET)
 
-$(TARGET): main.o Matrix.o
+$(TARGET): Main.o HumanClasses.o
 	$(CC) $(CFLAGS) $^ -o $(TARGET)
 
-main.o: main.cpp
+Main.o: Main.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
-Matrix.o: Matrix.cpp Matrix.h
+HumanClasses.o: HumanClasses.cpp HumanClasses.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

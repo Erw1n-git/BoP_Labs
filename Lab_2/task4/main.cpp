@@ -1,4 +1,20 @@
-#include "main.h"
+#include <iostream>
+
+#include "Matrix.h"
+
+void individualTask(Matrix& matrix)
+{
+    for (size_t i = 0; i < matrix.getRows(); i++)
+    {
+        for (size_t j = 0; j < matrix.getColumns(); j++)
+        {
+            if(int(matrix[i][j]) < 0 && matrix[i][j] % 2 != 0)
+            {
+                matrix[i][j] *= 2;
+            }
+        } 
+    }
+}
 
 int main(int argc, char** argv)
 {
@@ -68,18 +84,4 @@ int main(int argc, char** argv)
     individualTask(matrix3);
     std::cout << matrix3;
     return 0;
-}
-
-void individualTask(Matrix& matrix)
-{
-    for (size_t i = 0; i < matrix.getRows(); i++)
-    {
-        for (size_t j = 0; j < matrix.getColumns(); j++)
-        {
-            if(int(matrix[i][j]) < 0 && matrix[i][j] % 2 != 0)
-            {
-                matrix[i][j] *= 2;
-            }
-        } 
-    }
 }

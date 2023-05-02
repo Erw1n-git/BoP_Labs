@@ -22,8 +22,8 @@ class Student {
         int* grades;
         Group* group;
 
-    public:
-        static const int MAX_GRADES_COUNT;
+    public: 
+        static const int MAX_GRADES_COUNT = 5;    
 
         Student() : id(0), surname(nullptr), grades(nullptr), group(nullptr) { }
         Student(unsigned int id, const char *surname, const int *grades, size_t n, Group* group);

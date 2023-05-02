@@ -8,7 +8,7 @@ all: $(TARGET)
 $(TARGET): main.o Point3D.o
 	$(CC) $(CFLAGS) $^ -o $(TARGET)
 
-main.o: main.cpp main.h
+main.o: main.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 Point3D.o: Point3D.cpp Point3D.h

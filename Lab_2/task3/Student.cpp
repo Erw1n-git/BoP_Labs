@@ -1,7 +1,5 @@
 #include "Student.h"
 
-const int Student::MAX_GRADES_COUNT = 5;
-
 // ===== CONSTRUCTORS/DESTRUCTOR =====
 
 Student::Student(unsigned int id, const char* surname, const int* grades, size_t n, Group* group)

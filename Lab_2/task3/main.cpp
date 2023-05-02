@@ -1,4 +1,7 @@
-#include "main.h"
+#include <iostream>
+
+#include "Student.h"
+#include "Group.h"
 
 int main(int argc, char **argv)
 {
